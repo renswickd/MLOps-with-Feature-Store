@@ -2,3 +2,19 @@
 logs/
 *.egg-info/
 __pycache__/
+.ipynb_checkpoints/
+.DS_Store
+gcp-key*.json
+artifacts/
+test.py
+
+# Airflow
+airflow_settings.yaml
+.dags/**/__pycache__/
+.dags/*.pyc
+.airflowignore
+.astro/
+
+.dockerignore
+
+.vscode/

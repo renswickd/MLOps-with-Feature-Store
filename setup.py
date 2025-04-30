@@ -8,6 +8,6 @@ setup(
     version="0.1",
     author="Renswick Delvar",
     author_email="renswick.delver@gmail.com",
-    packages=find_packages(),
+    packages=find_packages(include=['src', 'src.*']),
     install_requires = requirements,
 )
