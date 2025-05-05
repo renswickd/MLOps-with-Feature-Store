@@ -4,3 +4,5 @@ setuptools
 psycopg2-binary
 scikit-learn
 dotenv
+redis
+imbalanced-learn
