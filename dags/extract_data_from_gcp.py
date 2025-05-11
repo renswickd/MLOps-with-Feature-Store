@@ -12,7 +12,8 @@ def upload_to_sql(file_path):
     conn = BaseHook.get_connection('postgres_default')  
     engine = sqlalchemy.create_engine(f"postgresql+psycopg2://{conn.login}:{conn.password}@mlops-with-redis_ca7fc5-postgres-1:{conn.port}/{conn.schema}")
     df = pd.read_csv(file_path)
-    df.to_sql(name="titanic", con=engine, if_exists="replace", index=False)
+    # df.to_sql(name="titanic", con=engine, if_exists="replace", index=False)
+    df.to_sql(name="life_expectancy", con=engine, if_exists="append", index=False)
 
 # Define the DAG
 with DAG(
@@ -30,14 +31,14 @@ with DAG(
     download_file = GCSToLocalFilesystemOperator(
         task_id="extract_file",
         bucket="e2e-mlops-with-redis", 
-        object_name="Titanic-Dataset.csv", 
-        filename="/tmp/Titanic-Dataset.csv", 
+        object_name="Life Expectancy Data.csv", 
+        filename="/tmp/Life Expectancy Data.csv", 
     )
     
     load_data = PythonOperator(
         task_id="load_data_to_sql",
         python_callable=upload_to_sql,
-        op_kwargs={"file_path": "/tmp/Titanic-Dataset.csv"}
+        op_kwargs={"file_path": "/tmp/Life Expectancy Data.csv"}
     )
 
     list_files >> download_file >> load_data
