@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Life Expectancy Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Life Expectancy Prediction</h1>
+        <form action="/predict" method="POST" class="prediction-form">
+            <div class="form-group">
+                <label for="Country">Country:</label>
+                <input type="text" id="Country" name="Country" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Year">Year:</label>
+                <input type="number" id="Year" name="Year" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Status">Status:</label>
+                <select id="Status" name="Status" required>
+                    <option value="0">Developing</option>
+                    <option value="1">Developed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Adult_Mortality">Adult Mortality:</label>
+                <input type="number" step="0.01" id="Adult_Mortality" name="Adult_Mortality" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Infant_Deaths">Infant Deaths:</label>
+                <input type="number" id="Infant_Deaths" name="Infant_Deaths" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Alcohol">Alcohol:</label>
+                <input type="number" step="0.01" id="Alcohol" name="Alcohol" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Percentage_Expenditure">Percentage Expenditure:</label>
+                <input type="number" step="0.01" id="Percentage_Expenditure" name="Percentage_Expenditure" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Hepatitis_B">Hepatitis B:</label>
+                <input type="number" step="0.01" id="Hepatitis_B" name="Hepatitis_B" required>
+            </div>
+
+            <div class="form-group">
+                <label for="BMI">BMI:</label>
+                <input type="number" step="0.01" id="BMI" name="BMI" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Polio">Polio:</label>
+                <input type="number" step="0.01" id="Polio" name="Polio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="GDP">GDP:</label>
+                <input type="number" step="0.01" id="GDP" name="GDP" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Schooling">Schooling:</label>
+                <input type="number" step="0.01" id="Schooling" name="Schooling" required>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <div class="prediction-result">
+            <h3>Prediction Result</h3>
+            {% if prediction_text %}
+            <p>{{ prediction_text }}</p>
+            {% else %}
+            <p>No predictions yet made...</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

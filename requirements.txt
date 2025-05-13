@@ -6,3 +6,4 @@ scikit-learn
 dotenv
 redis
 imbalanced-learn
+alibi-detect
