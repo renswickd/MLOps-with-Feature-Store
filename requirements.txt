@@ -7,3 +7,4 @@ dotenv
 redis
 imbalanced-learn
 alibi-detect
+prometheus_client
